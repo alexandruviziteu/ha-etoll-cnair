@@ -1,0 +1,158 @@
+# Autoevaluare față de Integration Quality Scale (țintă: Bronze).
+# Pentru o integrare custom, fișierul este informativ: hassfest îl validează
+# doar pentru integrările din core. Starea reflectă verificările lui Vlad
+# (teste, ruff, mypy, hassfest) la versiunea 0.2.0 + ajustările lui Dan.
+rules:
+  # ------------------------------------------------------------------ Bronze
+  action-setup:
+    status: exempt
+    comment: Integrarea nu înregistrează acțiuni (read-only).
+  appropriate-polling:
+    status: done
+    comment: Interval implicit 60 min, minim 15 min (API nedocumentat, risc de rate limit).
+  brands:
+    status: done
+    comment: >-
+      Imaginile sunt în brand/ (icon.png, icon@2x.png); folderul local e folosit de
+      Home Assistant de la 2026.3. Proveniența iconiței rămâne de confirmat (D2).
+  common-modules:
+    status: done
+    comment: coordinator.py și entity.py.
+  config-flow:
+    status: done
+  config-flow-test-coverage:
+    status: done
+    comment: tests/test_config_flow.py acoperă 100% din config_flow.py (succes, erori cu recuperare, duplicat, reauth, options).
+  dependency-transparency:
+    status: exempt
+    comment: manifest.json are requirements goale; clientul HTTP este în api.py (decizia D4).
+  docs-actions:
+    status: exempt
+    comment: Fără acțiuni.
+  docs-conditions:
+    status: exempt
+    comment: Fără condiții.
+  docs-high-level-description:
+    status: done
+    comment: README, secțiunea „Ce primești”.
+  docs-installation-instructions:
+    status: done
+    comment: README, secțiunea „Instalare”.
+  docs-removal-instructions:
+    status: done
+    comment: README, secțiunea „Dezinstalare”.
+  docs-triggers:
+    status: exempt
+    comment: Fără declanșatoare.
+  entity-event-setup:
+    status: exempt
+    comment: Polling prin coordinator; entitățile nu se abonează la evenimente.
+  entity-unique-id:
+    status: done
+  has-entity-name:
+    status: done
+  runtime-data:
+    status: done
+  test-before-configure:
+    status: done
+  test-before-setup:
+    status: done
+    comment: Eșecul primului refresh dă SETUP_RETRY, iar 401 pornește reauth (tests/test_init.py).
+  unique-config-entry:
+    status: done
+    comment: unique_id = email cu litere mici; duplicatul e testat.
+
+  # ------------------------------------------------------------------ Silver
+  action-exceptions:
+    status: exempt
+    comment: Fără acțiuni.
+  config-entry-unloading:
+    status: done
+    comment: tests/test_init.py::test_setup_and_unload.
+  docs-configuration-parameters:
+    status: done
+    comment: README documentează intervalul de actualizare (singura opțiune).
+  docs-installation-parameters:
+    status: done
+    comment: README, secțiunea „Configurare” (email și parolă).
+  entity-unavailable:
+    status: done
+    comment: UpdateFailed face entitățile indisponibile; un vehicul dispărut devine unavailable.
+  integration-owner:
+    status: done
+    comment: codeowners în manifest.json.
+  log-when-unavailable:
+    status: done
+    comment: Mecanismul DataUpdateCoordinator; verificat în tests/test_coordinator.py.
+  parallel-updates:
+    status: done
+    comment: PARALLEL_UPDATES = 0 în sensor.py și binary_sensor.py.
+  reauthentication-flow:
+    status: done
+  test-coverage:
+    status: done
+    comment: Acoperire 99% în total, minim 97% pe modul (pytest --cov).
+
+  # -------------------------------------------------------------------- Gold
+  devices:
+    status: done
+  diagnostics:
+    status: todo
+  discovery:
+    status: exempt
+    comment: Serviciu cloud, fără descoperire în rețea.
+  discovery-update-info:
+    status: exempt
+    comment: Serviciu cloud, fără descoperire în rețea.
+  docs-data-update:
+    status: todo
+  docs-examples:
+    status: done
+    comment: README conține un exemplu de automatizare.
+  docs-known-limitations:
+    status: done
+    comment: README, secțiunea „Limitări”.
+  docs-supported-devices:
+    status: exempt
+    comment: Serviciu cloud, nu dispozitive fizice.
+  docs-supported-functions:
+    status: done
+    comment: README, secțiunea „Ce primești”.
+  docs-troubleshooting:
+    status: todo
+  docs-use-cases:
+    status: todo
+  dynamic-devices:
+    status: done
+    comment: Vehiculele noi apar la următoarea actualizare (tests/test_entities.py).
+  entity-category:
+    status: done
+  entity-device-class:
+    status: done
+  entity-disabled-by-default:
+    status: done
+  entity-translations:
+    status: done
+  exception-translations:
+    status: todo
+  icon-translations:
+    status: todo
+    comment: Iconițele sunt setate direct pe descrieri, nu în icons.json.
+  reconfiguration-flow:
+    status: todo
+  repair-issues:
+    status: todo
+  stale-devices:
+    status: todo
+    comment: Un vehicul scos din cont rămâne în registrul de dispozitive.
+
+  # ---------------------------------------------------------------- Platinum
+  async-dependency:
+    status: exempt
+    comment: Clientul propriu e async (aiohttp).
+  inject-websession:
+    status: done
+    comment: Sesiunea vine din async_get_clientsession.
+  strict-typing:
+    status: todo
+    comment: mypy (config implicit) e curat, dar nu rulează în mod strict și nu există py.typed.

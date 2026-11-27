@@ -1,0 +1,85 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CNAIR eToll 2026",
+        "description": "Sign in with your etoll.ro account (email and password).",
+        "data": {
+          "username": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reauthenticate",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid email or password (or the account has no password login)",
+      "cannot_connect": "Cannot connect to etoll.ro"
+    },
+    "abort": {
+      "already_configured": "Account already configured",
+      "reauth_successful": "Reauthentication successful"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Update interval (minutes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "vignette_expiry": {
+        "name": "Vignette valid until"
+      },
+      "vignette_expiry_timestamp": {
+        "name": "Vignette expiry (timestamp)"
+      },
+      "vignette_days_left": {
+        "name": "Vignette days left"
+      },
+      "plate_number": {
+        "name": "Plate number"
+      },
+      "vin": {
+        "name": "VIN"
+      },
+      "registration_certificate": {
+        "name": "Registration certificate series"
+      },
+      "vehicle_category": {
+        "name": "Vehicle category"
+      },
+      "emission_standard": {
+        "name": "Emission standard"
+      },
+      "spending_year": {
+        "name": "Spending this year"
+      },
+      "notifications": {
+        "name": "Unread notifications"
+      },
+      "last_invoice": {
+        "name": "Last invoice"
+      },
+      "year_paid": {
+        "name": "Paid this year"
+      }
+    },
+    "binary_sensor": {
+      "vignette_active": {
+        "name": "Vignette active"
+      },
+      "vehicle_data_problem": {
+        "name": "Vehicle data issue"
+      }
+    }
+  }
+}

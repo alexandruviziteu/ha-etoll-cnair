@@ -1,0 +1,4 @@
+# 0.13.320 fixează homeassistant==2026.3.4 (seria minimă din hacs.json); cere Python >= 3.14.2
+pytest-homeassistant-custom-component==0.13.320
+ruff
+mypy

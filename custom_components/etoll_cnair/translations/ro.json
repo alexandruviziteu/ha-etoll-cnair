@@ -1,0 +1,85 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CNAIR eToll 2026",
+        "description": "Autentifică-te cu contul etoll.ro (email și parolă).",
+        "data": {
+          "username": "Email",
+          "password": "Parolă"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reautentificare",
+        "data": {
+          "password": "Parolă"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Email sau parolă invalidă (sau contul nu are login cu parolă)",
+      "cannot_connect": "Nu mă pot conecta la etoll.ro"
+    },
+    "abort": {
+      "already_configured": "Contul este deja configurat",
+      "reauth_successful": "Reautentificare reușită"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Interval de actualizare (minute)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "vignette_expiry": {
+        "name": "Rovinietă valabilă până la"
+      },
+      "vignette_expiry_timestamp": {
+        "name": "Rovinietă expirare (timestamp)"
+      },
+      "vignette_days_left": {
+        "name": "Rovinietă zile rămase"
+      },
+      "plate_number": {
+        "name": "Număr înmatriculare"
+      },
+      "vin": {
+        "name": "Serie șasiu (VIN)"
+      },
+      "registration_certificate": {
+        "name": "Serie certificat înmatriculare"
+      },
+      "vehicle_category": {
+        "name": "Categorie vehicul"
+      },
+      "emission_standard": {
+        "name": "Clasă de emisii"
+      },
+      "spending_year": {
+        "name": "Cheltuieli în anul curent"
+      },
+      "notifications": {
+        "name": "Notificări necitite"
+      },
+      "last_invoice": {
+        "name": "Ultima factură"
+      },
+      "year_paid": {
+        "name": "Total plătit în anul curent"
+      }
+    },
+    "binary_sensor": {
+      "vignette_active": {
+        "name": "Rovinietă activă"
+      },
+      "vehicle_data_problem": {
+        "name": "Probleme date vehicul"
+      }
+    }
+  }
+}
